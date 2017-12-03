@@ -109,7 +109,10 @@ print "<h1>3D Ödeme Başarılı</h1>";
 
 print "<h3>Sonuç:</h3>";
 echo ("<pre>");
-print(htmlentities($response));
+$xml = simplexml_load_string($response, "SimpleXMLElement", LIBXML_NOCDATA);
+$json = json_encode($xml);
+$array = json_decode($json,TRUE);
+print_r($array);
 echo ("</pre>");
 }
 else 
