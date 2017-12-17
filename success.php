@@ -111,9 +111,28 @@ print "<h3>Sonuç:</h3>";
 echo ("<pre>");
 $xml = simplexml_load_string($response, "SimpleXMLElement", LIBXML_NOCDATA);
 $json = json_encode($xml);
-$array = json_decode($json,TRUE);
-print_r($array);
+$ipara3DpaymentResponse = json_decode($json,TRUE);
+print_r($ipara3DpaymentResponse);
 echo ("</pre>");
+    
+// Objelerde Tutulan Tüm Veriler Şu Şekilde Görüntülenip, Daha Kolay Veritabanı Kaydı Yapılabilir :
+    
+$urunBilgileri  = $request->Products;
+$musteriBilgileri  = $request->Purchaser;
+$teslimatBilgileri = $request->Purchaser->ShippingAddress;
+    
+echo "<h2>Ödeme Bilgileri</h2>";
+print_r($paymentResponse);
+
+echo "<h2>Ürün Bilgileri</h2>";
+print_r($urunBilgileri);
+
+echo "<h2>Müşteri Bilgileri</h2>";
+print_r($musteriBilgileri);
+
+echo "<h2>Teslimat Bilgileri</h2>";
+print_r($teslimatBilgileri);
+    
 }
 else 
 {
